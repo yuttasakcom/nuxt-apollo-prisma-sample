@@ -1,4 +1,5 @@
 import createUser from '../graphql/user/mutation/createUser.gql'
+import deleteUser from '../graphql/user/mutation/deleteUser.gql'
 
 export const state = () => ({
   users: [],
@@ -32,7 +33,14 @@ export const actions = {
     })
     commit('SET_USER', data.createUser)
   },
-  deleteUser({ commit }, userId) {
+  async deleteUser({ commit }, userId) {
+    const client = this.app.apolloProvider.defaultClient
+    await client.mutate({
+      mutation: deleteUser,
+      variables: {
+        where: { id: userId },
+      },
+    })
     commit('DELETE_USER', userId)
   },
 }

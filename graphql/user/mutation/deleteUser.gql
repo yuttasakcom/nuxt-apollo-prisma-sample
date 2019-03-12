@@ -1,0 +1,8 @@
+mutation($where: UserWhereUniqueInput!) {
+  deleteUser(where: $where) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
