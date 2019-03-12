@@ -1,0 +1,8 @@
+query($orderBy: UserOrderByInput) {
+  users(orderBy: $orderBy) {
+    id
+    name
+    updatedAt
+    createdAt
+  }
+}
